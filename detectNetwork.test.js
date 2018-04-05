@@ -136,12 +136,48 @@ describe('MasterCard', function() {
 describe('Discover', function() {
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
-  it('has a prefix of 6011 and a length of 16');
-  it('has a prefix of 6011 and a length of 19');
+  it('has a prefix of 6011 and a length of 16', function() {
+    detectNetwork('6011756475867586').should.equal('Discover');
+  });
+  it('has a prefix of 6011 and a length of 19', function() {
+    detectNetwork('6011746593847564789').should.equal('Discover');
+  });
+  it('has a prefix of 65 and a length of 16', function() {
+    detectNetwork('6011756475867586').should.equal('Discover');
+  });
+  it('has a prefix of 65 and a length of 19', function() {
+    detectNetwork('6011746593847564789').should.equal('Discover');
+  });
+  for (var prefix = 644; prefix <= 649; prefix++) {
+    (function(prefix) {
+    it('has a prefix of ' + prefix + ' and a length of 16', function() {
+      detectNetwork(prefix.toString() + '456789012345').should.equal('Discover');
+    });
+    it('has a prefix of ' + prefix + ' and a length of 19', function() {
+      detectNetwork(prefix.toString() + '4567890123456789').should.equal('Discover');
+    });
+  })(prefix)
+  }
 });
 
 describe('Maestro', function() {
   // Write full test coverage for the Maestro card
+  for (var length = 12; length <= 19; length++) {
+    (function(length) {
+    it('has a prefix of 5018 and a length of' + length, function() {
+      detectNetwork('5018456789012345').should.equal('Maestro');
+    });
+    it('has a prefix of 5020 and a length of' + length, function() {
+      detectNetwork('5020456789012345').should.equal('Maestro');
+    });
+    it('has a prefix of 5038 and a length of' + length, function() {
+      detectNetwork('5038456789012345').should.equal('Maestro');
+    });
+    it('has a prefix of 6304 and a length of' + length, function() {
+      detectNetwork('6304456789012345').should.equal('Maestro');
+    });
+    });
+  }(prefix)
 });
 
 describe('should support China UnionPay')
