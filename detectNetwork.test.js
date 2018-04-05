@@ -151,7 +151,7 @@ describe('Discover', function() {
   for (var prefix = 644; prefix <= 649; prefix++) {
     (function(prefix) {
     it('has a prefix of ' + prefix + ' and a length of 16', function() {
-      detectNetwork(prefix.toString() + '456789012345').should.equal('Discover');
+      detectNetwork(prefix.toString() + '4567890123456').should.equal('Discover');
     });
     it('has a prefix of ' + prefix + ' and a length of 19', function() {
       detectNetwork(prefix.toString() + '4567890123456789').should.equal('Discover');
