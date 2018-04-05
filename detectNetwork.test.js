@@ -143,10 +143,10 @@ describe('Discover', function() {
     detectNetwork('6011746593847564789').should.equal('Discover');
   });
   it('has a prefix of 65 and a length of 16', function() {
-    detectNetwork('6011756475867586').should.equal('Discover');
+    detectNetwork('6511756475867586').should.equal('Discover');
   });
   it('has a prefix of 65 and a length of 19', function() {
-    detectNetwork('6011746593847564789').should.equal('Discover');
+    detectNetwork('6511746593847564789').should.equal('Discover');
   });
   for (var prefix = 644; prefix <= 649; prefix++) {
     (function(prefix) {
