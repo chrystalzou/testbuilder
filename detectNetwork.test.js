@@ -177,7 +177,7 @@ describe('Maestro', function() {
     it('has a prefix of' + prefix[i] + 'and a length of 15', function() {
       detectNetwork(prefix.toString() + '56789012345').should.equal('Maestro');
     });
-  })(length)
+  })(prefix[i])
   }
 });
 
