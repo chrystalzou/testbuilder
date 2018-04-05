@@ -19,10 +19,12 @@ var detectNetwork = function(cardNumber) {
   	network = "Diner\'s Club";
   } else if ((prefix === 34 || prefix === 37) && (cardNumber.length === 15)) {
   	network = "American Express";
+  } else if ((Number(String(prefix).charAt(0)) === 4) && (cardNumber.length === 13 || cardNumber.length === 16 || cardNumber.length === 19)) {
+    network = "Visa";
+  } else if ((prefix === 51 || prefix === 52 || prefix === 53 || prefix === 54 || prefix === 55) && (cardNumber.length === 16)) {
+    network = "MasterCard";
   }
   return network;
 };
-
-detectNetwork('38345678901234');
 
 
