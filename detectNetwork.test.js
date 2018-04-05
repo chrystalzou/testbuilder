@@ -162,23 +162,37 @@ describe('Discover', function() {
 
 describe('Maestro', function() {
   // Write full test coverage for the Maestro card
-  var prefix = [5018, 5020, 5038, 6304];
-  for (var i = 0; i < prefix.length; i++) {
-    var testNum = prefix[i];
-    (function(i) {
-    it('has a prefix of' + testNum + 'and a length of 12', function() {
-      detectNetwork(prefix.toString() + '56789012').should.equal('Maestro');
-    });
-    it('has a prefix of'+ testNum + 'and a length of 13', function() {
-      detectNetwork(prefix.toString() + '567890123').should.equal('Maestro');
-    });
-    it('has a prefix' + testNum + 'and a length of 14', function() {
-      detectNetwork(prefix.toString() + '5678901234').should.equal('Maestro');
-    });
-    it('has a prefix of' + testNum + 'and a length of 15', function() {
-      detectNetwork(prefix.toString() + '56789012345').should.equal('Maestro');
-    });
-  })(testNum)
+  var should = chai.should();
+  var num = [5018, 5020, 5038, 6304];
+
+  for (var i = 0; i < num.length; i++) {
+    var testNum = num[i];
+    (function(testNum) {
+      it('has a prefix of ' + testNum + ' and a length of 12', function () {
+        detectNetwork(testNum.toString() + '12345678').should.equal('Maestro');
+      });
+      it('has a prefix of ' + testNum + ' and a length of 13', function () {
+        detectNetwork(testNum.toString() + '123456789').should.equal('Maestro');
+      });
+      it('has a prefix of ' + testNum + ' and a length of 14', function () {
+        detectNetwork(testNum.toString() + '1234567890').should.equal('Maestro');
+      });
+      it('has a prefix of ' + testNum + ' and a length of 15', function () {
+        detectNetwork(testNum.toString() + '12345678901').should.equal('Maestro');
+      });
+      it('has a prefix of ' + testNum + ' and a length of 16', function () {
+        detectNetwork(testNum.toString() + '123456789012').should.equal('Maestro');
+      });
+      it('has a prefix of ' + testNum + ' and a length of 17', function () {
+        detectNetwork(testNum.toString() + '1234567890123').should.equal('Maestro');
+      });
+      it('has a prefix of ' + testNum + ' and a length of 18', function () {
+        detectNetwork(testNum.toString() + '12345678901234').should.equal('Maestro');
+      });
+      it('has a prefix of ' + testNum + ' and a length of 19', function () {
+        detectNetwork(testNum.toString() + '123456789012345').should.equal('Maestro');
+      });
+    }) (testNum)  
   }
 });
 
