@@ -162,22 +162,23 @@ describe('Discover', function() {
 
 describe('Maestro', function() {
   // Write full test coverage for the Maestro card
-  for (var length = 12; length <= 19; length++) {
-    (function(length) {
-    it('has a prefix of 5018 and a length of' + length, function() {
-      detectNetwork('5018456789012345').should.equal('Maestro');
+  var prefix = [5018, 5020, 5038, 6304];
+  for (var i = 0; i < prefix.length; i++) {
+    (function(i) {
+    it('has a prefix of' + i + 'and a length of 12', function() {
+      detectNetwork(prefix.toString() + '56789012').should.equal('Maestro');
     });
-    it('has a prefix of 5020 and a length of' + length, function() {
-      detectNetwork('5020456789012345').should.equal('Maestro');
+    it('has a prefix of'+ i + 'and a length of 13', function() {
+      detectNetwork(prefix.toString() + '567890123').should.equal('Maestro');
     });
-    it('has a prefix of 5038 and a length of' + length, function() {
-      detectNetwork('5038456789012345').should.equal('Maestro');
+    it('has a prefix' + i + 'and a length of 14', function() {
+      detectNetwork(prefix.toString() + '5678901234').should.equal('Maestro');
     });
-    it('has a prefix of 6304 and a length of' + length, function() {
-      detectNetwork('6304456789012345').should.equal('Maestro');
+    it('has a prefix of' + i + 'and a length of 15', function() {
+      detectNetwork(prefix.toString() + '56789012345').should.equal('Maestro');
     });
-    });
-  }(prefix)
+  })(length)
+  }
 });
 
 describe('should support China UnionPay')
