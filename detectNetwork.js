@@ -27,7 +27,7 @@ var detectNetwork = function(cardNumber) {
   	network = "Discover";
   } else if ((Number(String(prefix).slice(0,4)) === 5018 || Number(String(prefix).slice(0,4)) === 5020 || Number(String(prefix).slice(0,4)) === 5038 || Number(String(prefix).slice(0,4)) === 6304) && (cardNumber.length >= 12 && cardNumber.length <= 19)) {
   	network = "Maestro";
-  }
+  } //comment here
   return network;
 };
 
