@@ -23,6 +23,10 @@ var detectNetwork = function(cardNumber) {
     network = "Visa";
   } else if ((prefix === 51 || prefix === 52 || prefix === 53 || prefix === 54 || prefix === 55) && (cardNumber.length === 16)) {
     network = "MasterCard";
+  } else if ((Number(String(prefix).slice(0,4)) === 6011 || (Number(String(prefix).slice(0,3)) >= 644 && (Number(String(prefix).slice(0,3)) <= 649) || prefix === 65) && (cardNumber.length === 16 || cardNumber.length === 19)) {
+  	network = "Discover";
+  } else if (((Number(String(prefix).slice(0,4)) === 5018 || (Number(String(prefix).slice(0,4)) === 5020 || (Number(String(prefix).slice(0,4)) === 5038 || (Number(String(prefix).slice(0,4)) === 6304) && (cardNumber.length >= 12 && cardNumber.length <= 19)) {
+  	network = "Maestro";
   }
   return network;
 };
