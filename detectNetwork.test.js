@@ -102,15 +102,15 @@ describe('MasterCard', function() {
   var should = chai.should();
  
   it('has a prefix of 51 and a length of 16', function() {
-    expect(detectNetwork('5112345678901234')).should.equal('MasterCard');
+    detectNetwork('5112345678901234').should.equal('MasterCard');
   });
  
   it('has a prefix of 52 and a length of 16', function() {
-    expect(detectNetwork('5212345678901234')).should.equal('MasterCard');
+    detectNetwork('5212345678901234').should.equal('MasterCard');
   });
  
   it('has a prefix of 53 and a length of 16', function() {
-    expect(detectNetwork('5312345678901234')).should.equal('MasterCard');
+    detectNetwork('5312345678901234').should.equal('MasterCard');
   });
  
 
