@@ -25,7 +25,7 @@ var detectNetwork = function(cardNumber) {
     network = "MasterCard";
   } else if (((Number(cardNumber.slice(0,4))) === 6011 || (Number(cardNumber.slice(0,3)) >= 644 && Number(cardNumber.slice(0,3)) <= 649) || prefix === 65) && (cardNumber.length === 16 || cardNumber.length === 19)) {
   	network = "Discover";
-  } else if ((Number(String(prefix).slice(0,4)) === 5018 || Number(String(prefix).slice(0,4)) === 5020 || Number(String(prefix).slice(0,4)) === 5038 || Number(String(prefix).slice(0,4)) === 6304) && (cardNumber.length >= 12 && cardNumber.length <= 19)) {
+  } else if ((Number(cardNumber.slice(0,4)) === 5018 || Number(cardNumber.slice(0,4)) === 5020 || Number(cardNumber.slice(0,4)) === 5038 || Number(cardNumber.slice(0,4)) === 6304) && (cardNumber.length >= 12 && cardNumber.length <= 19)) {
   	network = "Maestro";
   }
   return network;
