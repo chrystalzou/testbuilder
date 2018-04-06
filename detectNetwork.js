@@ -27,6 +27,10 @@ var detectNetwork = function(cardNumber) {
   	network = "Discover";
   } else if ((Number(cardNumber.slice(0,4)) === 5018 || Number(cardNumber.slice(0,4)) === 5020 || Number(cardNumber.slice(0,4)) === 5038 || Number(cardNumber.slice(0,4)) === 6304) && (cardNumber.length >= 12 && cardNumber.length <= 19)) {
   	network = "Maestro";
+  } else if (((Number(cardNumber.slice(0,6)) >= 622126 && Number(cardNumber.slice(0,6)) <= 622925)
+  || (Number(cardNumber.slice(0,3)) >= 624 && Number(cardNumber.slice(0,3)) <= 626)
+  || (Number(cardNumber.slice(0,4)) >= 6282 && Number(cardNumber.slice(0,4)) >= 6288)) && (cardNumber.length >= 16 && cardNumber.length <= 19)) {
+  	network = "China UnionPay";
   }
   return network;
 };
