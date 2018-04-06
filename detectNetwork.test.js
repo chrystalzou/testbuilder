@@ -135,6 +135,8 @@ describe('MasterCard', function() {
 describe('Discover', function() {
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
+  var should = chai.should();
+
   it('has a prefix of 6011 and a length of 16', function() {
     detectNetwork('6011756475867586').should.equal('Discover');
   });
@@ -195,25 +197,25 @@ describe('Maestro', function() {
   }
 });
 
-// describe('should support China UnionPay', function() {
-//   var should = chai.should();
+describe('China UnionPay', function() {
+  var should = chai.should();
 
-//   for (var i = 622126; i <= 622925; i++) {
-//     (function(i) {
-//       it('has a prefix of ' + i + ' and a length of 16', function () {
-//         detectNetwork(i.toString() + '1234567890').should.equal('China UnionPay');
-//       });
-//       it('has a prefix of ' + i + ' and a length of 17', function () {
-//         detectNetwork(i.toString() + '12345678901').should.equal('China UnionPay');
-//       });
-//       it('has a prefix of ' + i + ' and a length of 18', function () {
-//         detectNetwork(i.toString() + '123456789012').should.equal('China UnionPay');
-//       });
-//       it('has a prefix of ' + i + ' and a length of 19', function () {
-//         detectNetwork(i.toString() + '1234567890123').should.equal('China UnionPay');
-//       });
-//     }) (i)
-//   }
+  for (var i = 622126; i <= 622925; i++) {
+    (function(i) {
+      it('has a prefix of ' + i + ' and a length of 16', function () {
+        detectNetwork(i.toString() + '1234567890').should.equal('China UnionPay');
+      });
+      it('has a prefix of ' + i + ' and a length of 17', function () {
+        detectNetwork(i.toString() + '12345678901').should.equal('China UnionPay');
+      });
+      it('has a prefix of ' + i + ' and a length of 18', function () {
+        detectNetwork(i.toString() + '123456789012').should.equal('China UnionPay');
+      });
+      it('has a prefix of ' + i + ' and a length of 19', function () {
+        detectNetwork(i.toString() + '1234567890123').should.equal('China UnionPay');
+      });
+    }) (i)
+  }
 
 //   for (var i = 6282; i <= 6288; i++) {
 //     (function(i) {
