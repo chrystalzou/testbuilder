@@ -19,8 +19,6 @@ var detectNetwork = function(cardNumber) {
   	network = "Diner\'s Club";
   } else if ((prefix === 34 || prefix === 37) && (cardNumber.length === 15)) {
   	network = "American Express";
-  } else if ((Number(String(prefix).charAt(0)) === 4) && (cardNumber.length === 13 || cardNumber.length === 16 || cardNumber.length === 19)) {
-    network = "Visa";
   } else if ((prefix === 51 || prefix === 52 || prefix === 53 || prefix === 54 || prefix === 55) && (cardNumber.length === 16)) {
     network = "MasterCard";
   } else if (((Number(cardNumber.slice(0,4))) === 6011 || (Number(cardNumber.slice(0,3)) >= 644 && Number(cardNumber.slice(0,3)) <= 649) || prefix === 65) && (cardNumber.length === 16 || cardNumber.length === 19)) {
@@ -32,6 +30,18 @@ var detectNetwork = function(cardNumber) {
            || (Number(cardNumber.slice(0,4)) >= 6282 && Number(cardNumber.slice(0,4)) <= 6288))
            && (cardNumber.length >= 16 && cardNumber.length <= 19)) {
   	network = "China UnionPay";
+  } else if ((Number(cardNumber.slice(0,4)) === 4903
+  	       || Number(cardNumber.slice(0,4)) === 4905
+  	       || Number(cardNumber.slice(0,4)) === 4911
+  	       || Number(cardNumber.slice(0,4)) === 4936
+  	       || Number(cardNumber.slice(0,6)) === 564182
+  	       || Number(cardNumber.slice(0,6)) === 633110
+  	       || Number(cardNumber.slice(0,4)) === 6333
+  	       || Number(cardNumber.slice(0,4)) === 6759) 
+  	      && (cardNumber.length === 16 || cardNumber.length === 18 || cardNumber.length === 19)) {
+  	network = 'Switch';
+  } else if ((Number(String(prefix).charAt(0)) === 4) && (cardNumber.length === 13 || cardNumber.length === 16 || cardNumber.length === 19)) {
+    network = "Visa";
   }
   return network;
 };

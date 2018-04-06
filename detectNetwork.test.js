@@ -263,3 +263,50 @@ describe('China UnionPay', function() {
     // length 19
 });
 
+describe('Switch', function () {
+  // Switch always has a prefix of 4903, 4905, 4911, 4936, 564182, 633110, 6333, or 6759 and a length of 16, 18, or 19.
+  var array = [4903, 4905, 4911, 4936, 564182, 633110, 6333, 6759];
+  for (var i = 0; i <= 3; i++) {
+    var prefix = array[i];
+    (function(prefix) {
+      it('has a prefix of ' + prefix + ' and a length of 16', function() {
+        detectNetwork(prefix.toString() + '567890123456').should.equal('Switch');
+      });
+      it('has a prefix of ' + prefix + ' and a length of 18', function() {
+        detectNetwork(prefix.toString() + '789012345678').should.equal('Switch');
+      });
+      it('has a prefix of ' + prefix + ' and a length of 19', function() {
+        detectNetwork(prefix.toString() + '7890123456789').should.equal('Switch');
+      });
+    }) (prefix)
+  }
+  for (var i = 4; i <= 5; i++) {
+    var prefix = array[i];
+    (function(prefix) {
+      it('has a prefix of ' + prefix + ' and a length of 16', function() {
+        detectNetwork(prefix.toString() + '567890123456').should.equal('Switch');
+      });
+      it('has a prefix of ' + prefix + ' and a length of 18', function() {
+        detectNetwork(prefix.toString() + '789012345678').should.equal('Switch');
+      });
+      it('has a prefix of ' + prefix + ' and a length of 19', function() {
+        detectNetwork(prefix.toString() + '7890123456789').should.equal('Switch');
+      });
+    }) (prefix)
+  }
+  for (var i = 6; i <= 7; i++) {
+    var prefix = array[i];
+    (function(prefix) {
+      it('has a prefix of ' + prefix + ' and a length of 16', function() {
+        detectNetwork(prefix.toString() + '567890123456').should.equal('Switch');
+      });
+      it('has a prefix of ' + prefix + ' and a length of 18', function() {
+        detectNetwork(prefix.toString() + '789012345678').should.equal('Switch');
+      });
+      it('has a prefix of ' + prefix + ' and a length of 19', function() {
+        detectNetwork(prefix.toString() + '7890123456789').should.equal('Switch');
+      });
+    }) (prefix)
+  }
+});
+
